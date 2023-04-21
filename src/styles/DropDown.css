@@ -1,0 +1,27 @@
+.history-dropdown {
+  background-color: #343541;
+  color: #fff;
+  transition: all 0.5s;
+  z-index: 99;
+}
+
+.history-ul {
+  width: 100%;
+  padding-inline-start: 0;
+}
+
+.history-ul li {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.dropdown-comment-icon {
+  display: flex;
+  justify-content: flex-start;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+}

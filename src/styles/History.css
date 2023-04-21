@@ -1,0 +1,89 @@
+.history-section {
+  height: 100vh;
+  width: 25%;
+  background-color: #343541;
+  color: #fff;
+}
+
+.history-article {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.history-section button {
+  width: 90%;
+  margin: 0.65rem auto;
+  padding: 0.65rem;
+  font-size: 1.1rem;
+  color: #fff;
+  background: transparent;
+  border: 1.5px solid #C2C3C6;
+  border-radius: 5px;
+}
+
+.history-section h4 {
+  width: 100%;
+  text-align: left;
+  padding-left: 1rem;
+  margin: 1rem auto;
+}
+
+.history-list {
+  width: 100%;
+  /* overflow-y: scroll; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0 0.65rem;
+}
+
+.history-list li {
+  width: 100%;
+  text-align: left;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.comment-icon {
+  display: flex;
+  justify-content: flex-start;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+
+.history-footer {
+  height: 20%;
+  width: 90%;
+  margin: 0 auto;
+  border-top: 1.5px solid #C2C3C6;
+  background-color: #343541;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.history-footer p,
+.portfolio-link {
+  font-size: 0.85rem;
+  margin: 0.5rem;
+  text-align: center;
+}
+
+.portfolio-link:hover {
+  color: #bebfc4;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 980px) {
+
+  .history-section {
+    display: none;
+  }
+
+}

@@ -1,0 +1,40 @@
+.header {
+  padding: 0.75rem 1rem;
+  background-color: #343541;
+  color: #fff;
+  border-bottom: 1.5px solid #C2C3C6;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.new-btn {
+  width: 40%;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  color: #fff;
+  background: transparent;
+  border: 1.5px solid #C2C3C6;
+  border-radius: 5px;
+}
+
+.history-btn {
+  font-size: 0.9rem;
+  color: #fff;
+  border: none;
+  background: transparent;
+}
+
+@media only screen and (min-width: 980px) {
+  
+  .header {
+    display: none;
+  }
+
+}
