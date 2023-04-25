@@ -1,6 +1,6 @@
 # RobGPT React App
 
-<img src='./src/assets/robgpt.webp' width='800'/>
+<img src='./src/assets/RobGPT.webp' width='800'/>
 
 Deployed link: https://robgpt.netlify.app
 
