@@ -1,7 +1,11 @@
-export interface IChatHistory {
-  chatTitle: string,
-  role: string,
-  content: string | null
+export interface IChat {
+  clientRole: string | undefined
+  message: string | undefined
+  assistantRole: string | undefined
+  response: string | undefined
 }
 
-export default IChatHistory;
+export interface IChatHistory {
+  chatTitle: string,
+  chat: IChat[]
+}

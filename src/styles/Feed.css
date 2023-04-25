@@ -52,12 +52,17 @@
 .feed li {
   width: 100%;
   height: fit-content;
+}
+
+.message, .response {
+  width: 100%;
+  height: fit-content;
   padding: 0.5rem 1.5rem;
   display: flex;
   align-items: flex-start;
 }
 
-.feed li:nth-of-type(even) {
+.response {
   background-color: #FBFBFB;
   border-top: 1px solid #ededed;
   border-bottom: 1px solid #ededed;
@@ -176,7 +181,7 @@
     padding-top: 2rem;
   }
 
-  .feed li {
+  .message, .response {
     padding: 0 10rem;
   }
 

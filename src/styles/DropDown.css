@@ -12,16 +12,38 @@
 
 .history-ul li {
   width: 100%;
-  text-align: left;
+  padding: 0 1rem;
   display: flex;
   align-items: center;
-  padding: 0;
-  margin-bottom: 1rem;
+  border-radius: 5px;
 }
 
-.dropdown-comment-icon {
+.history-ul li:hover {
+  background-color: #3e3f4a;
+}
+
+.dropdown-history-text {
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown-comment-icon,
+.dropdown-trash-icon {
   display: flex;
   justify-content: flex-start;
-  margin-right: 1rem;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  margin: 0 1rem 0 0;
+}
+
+.dropdown-trash-icon {
+  margin: 0 0 0 1rem;
+}
+
+.delete-history {
+  display: flex;
+  padding: 0;
+}
+
+.delete-history h6 {
+  margin: 0 0.25rem 0 0;
 }

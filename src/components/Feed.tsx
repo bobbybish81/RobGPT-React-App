@@ -3,36 +3,35 @@ import { Link } from 'react-router-dom';
 import { CiLocationArrow1 } from 'react-icons/ci';
 import { BsQuestionSquare } from 'react-icons/bs';
 import { SiAnswer } from 'react-icons/si';
-import IChatHistory from '../interfaces/IChatHistory';
+import { IChat, IChatHistory } from '../interfaces/IChatHistory';
 import IResponse from '../interfaces/IResponse';
 import '../styles/Feed.css';
 
 interface FeedProps {
   chatHistory: IChatHistory[],
-  setChatHistory: React.Dispatch<React.SetStateAction<IChatHistory[]>>,
   message: string,
   setMessage: (message : string) => void,
   response: IResponse | null,
   setResponse: (response : IResponse) => void,
-  currentChat: string | null,
-  setCurrentChat: (chatTitle : string) => void,
+  currentChat: IChat[],
+  setCurrentChat: React.Dispatch<React.SetStateAction<IChat[]>>,
+  currentTitle: string | null,
+  setCurrentTitle: (chatTitle : string) => void,
 }
 
 const Feed = ({
   chatHistory,
-  setChatHistory,
   message,
   setMessage,
   response,
   setResponse,
   currentChat,
-  setCurrentChat } : FeedProps) => {
-
-  const current = chatHistory.filter(chat => chat.chatTitle === currentChat);
+  setCurrentChat,
+  currentTitle,
+  setCurrentTitle } : FeedProps) => {
 
   const sendMessage = async (event:any) => {
     event.preventDefault();
-    console.log(message)
     const options = {
       method: 'POST',
       headers: {
@@ -48,30 +47,31 @@ const Feed = ({
     try {
       const response = await fetch('https://api.openai.com/v1/chat/completions', options);
       const data = await response.json();
-      console.log(data)
       setResponse(data.choices[0].message);
+      if (!currentTitle && !chatHistory.some(obj => obj.hasOwnProperty(message))) {
+        setCurrentTitle(message);
+      }
     } catch (error) {
       console.log(error)
     }
   }
 
-  useEffect(()=> {
-    if (!currentChat && message && response) {
-      setCurrentChat(message)
-    }
-    if (currentChat && message && response) {
-      setChatHistory(
-          [...chatHistory,
-          {chatTitle: currentChat, role: 'user', content: message},
-          {chatTitle: currentChat, role: response.role, content: response.content},
-        ]
-      )
-    }
-  }, [response, currentChat])
+  useEffect(() => {
+    if (currentTitle && message.length > 0 && response) {
+      const newMessage = {
+        clientRole: 'user',
+        message: message,
+        assistantRole: response?.role,
+        response: response?.content
+      }
+      setCurrentChat(prevArray => [...prevArray, newMessage]);
+      setMessage('');
+    } 
+  }, [response, currentTitle]);
 
   return (
     <section className='feed-section'>
-      {!currentChat && 
+      {!currentTitle && 
       <div className='feed-header'>
         <h1>RobGPT</h1>
         <p>To use RobGPT, you can simply start by asking a question or giving a prompt. RobGPT is a language model designed to understand and respond to a wide range of questions and prompts, so feel free to ask anything that comes to mind.</p>
@@ -79,21 +79,25 @@ const Feed = ({
       </div>
       }
       <ul className='feed'>
-        {chatHistory.map((chat, index) => 
-          <li key={index}>
-            {chat.role === 'user' ? 
-            <span className='role'><BsQuestionSquare/></span> :
-            <span className='role'><SiAnswer/></span>}
-            <p className='content'>{chat.content}</p>
-          </li>
-        )}
+      {currentChat?.map((chat, index) =>
+        <li key={index}>
+          <div className='message'>
+            <span className='role'><BsQuestionSquare/></span>
+            <p className='content'>{chat.message}</p>
+          </div>
+          <div className='response'>
+            <span className='role'><SiAnswer/></span>
+            <p className='content'>{chat.response}</p>
+          </div>
+        </li>)}
       </ul>
       <section className='form-section'>
         <form
           className='form'
           onSubmit={sendMessage}>
             <input
-              value={message}
+              type='text'
+              value={message!}
               onChange={(e) => setMessage(e.target.value)}
               placeholder='Send a message...'/>
             <button

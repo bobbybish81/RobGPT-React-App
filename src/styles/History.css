@@ -22,11 +22,24 @@
   border-radius: 5px;
 }
 
-.history-section h4 {
+.history-header {
   width: 100%;
+  padding: 1rem;
+  margin: 1rem auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-header div {
+  display: flex;
+}
+
+.history-header h4,
+.history-header h6 {
   text-align: left;
-  padding-left: 1rem;
-  margin: 1rem auto;
+  margin: 0 0.25rem 0 0;
+  padding: 0;
 }
 
 .history-list {
@@ -40,20 +53,31 @@
 
 .history-list li {
   width: 100%;
-  text-align: left;
   padding: 0 1rem;
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
 }
 
-.comment-icon {
+.history-list li:hover {
+  background-color: #3e3f4a;
+}
+
+.history-text {
+  width: 100%;
+  text-align: left;
+}
+
+.comment-icon,
+.trash-icon {
   display: flex;
   justify-content: flex-start;
-  margin-right: 1rem;
   font-size: 1.5rem;
+  margin: 0 1rem 0 0;
 }
 
+.trash-icon {
+  margin: 0 0 0 1rem;
+}
 
 .history-footer {
   height: 20%;

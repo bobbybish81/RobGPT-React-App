@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import IChatHistory from '../interfaces/IChatHistory';
+import { IChatHistory } from '../interfaces/IChatHistory';
 import DropDown from '../components/DropDown';
 import '../styles/Header.css';
 
 interface HeaderProps {
   chatHistory: IChatHistory[],
   newChat: () => void,
-  changeCurrentChat: (title : string) => void,
+  displayPreviousChat: (title : string) => void,
+  deleteChat: (title : string) => void,
+  deleteChatHistory: () => void,
 }
 
-const Header = ({ chatHistory, newChat, changeCurrentChat } : HeaderProps) => {
+const Header = ({ chatHistory, newChat, displayPreviousChat, deleteChat, deleteChatHistory } : HeaderProps) => {
 
   const [openDropdown, setOpenDropdown] = useState(false);
   const [toggleText, setToggleText] = useState('Show History');
@@ -28,7 +30,9 @@ const Header = ({ chatHistory, newChat, changeCurrentChat } : HeaderProps) => {
       <DropDown
         chatHistory={chatHistory}
         openDropdown={openDropdown}
-        changeCurrentChat={changeCurrentChat}/>
+        displayPreviousChat={displayPreviousChat}
+        deleteChat={deleteChat}
+        deleteChatHistory={deleteChatHistory}/>
     </header>
   )
 }

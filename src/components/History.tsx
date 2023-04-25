@@ -1,16 +1,18 @@
 import React from 'react';
-import { BiComment } from 'react-icons/bi';
+import { BiComment, BiTrash } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
-import IChatHistory from '../interfaces/IChatHistory';
+import { IChatHistory } from '../interfaces/IChatHistory';
 import '../styles/History.css';
 
 interface HistoryProps {
   chatHistory: IChatHistory[],
   newChat: () => void,
-  changeCurrentChat: (title : string) => void,
+  displayPreviousChat: (title : string) => void,
+  deleteChat: (title : string) => void,
+  deleteChatHistory: () => void,
 }
 
-const History = ({ chatHistory, newChat, changeCurrentChat } : HistoryProps) => {
+const History = ({ chatHistory, newChat, displayPreviousChat, deleteChat, deleteChatHistory } : HistoryProps) => {
 
   const chatTitles = Array.from(new Set(chatHistory.map(chat => chat.chatTitle)));
 
@@ -18,16 +20,26 @@ const History = ({ chatHistory, newChat, changeCurrentChat } : HistoryProps) => 
     <section className='history-section'>
       <article className='history-article'>
         <button onClick={newChat}>+ New Chat</button>
-        <h4>History</h4>
+        <div className='history-header'>
+          <h4>History</h4>
+          {chatHistory?.length > 0 ?
+            <div onClick={deleteChatHistory}>
+              <h6>Delete History</h6><BiTrash/>
+            </div> :
+          null}
+        </div>
         <ul className='history-list'>
-          {chatTitles?.map((title, index) => (
-            <li
-              key={index}
-              onClick={()=> changeCurrentChat(title)}>
-              <BiComment className='comment-icon'/>
-              {title}
+          {chatTitles.length > 0 ? chatTitles?.map((title, index) => (
+            <li key={index}>
+              <BiComment className='dropdown-comment-icon'/>
+              <p
+                className='dropdown-history-text'
+                onClick={()=> displayPreviousChat(title)}>{title}</p>
+              <BiTrash
+                className='dropdown-trash-icon'
+                onClick={()=> deleteChat(title)}/>
             </li>
-          ))}
+          )) : null}
         </ul>
       </article>
       <footer className='history-footer'>

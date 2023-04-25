@@ -1,15 +1,17 @@
 import React from 'react';
-import IChatHistory from '../interfaces/IChatHistory';
-import { BiComment } from 'react-icons/bi';
+import { IChatHistory } from '../interfaces/IChatHistory';
+import { BiComment, BiTrash } from 'react-icons/bi';
 import '../styles/DropDown.css';
 
 interface DropDownProps {
   chatHistory: IChatHistory[],
   openDropdown: boolean,
-  changeCurrentChat: (title : string) => void,
+  displayPreviousChat: (title : string) => void,
+  deleteChat: (title : string) => void,
+  deleteChatHistory: () => void,
 }
 
-const DropDown = ({ chatHistory, openDropdown, changeCurrentChat } : DropDownProps) => {
+const DropDown = ({ chatHistory, openDropdown, displayPreviousChat, deleteChat, deleteChatHistory } : DropDownProps) => {
 
   const chatTitles = Array.from(new Set(chatHistory.map(chat => chat.chatTitle)));
 
@@ -30,15 +32,23 @@ const DropDown = ({ chatHistory, openDropdown, changeCurrentChat } : DropDownPro
       style={openDropdown ? dropdownStyles.Active : dropdownStyles.Inactive}>
       <ul className='history-ul'
         style={{display: openDropdown ? 'block' : 'none'}}>
-        {chatTitles?.map((title, index) => (
-          <li
-          key={index}
-          onClick={()=> changeCurrentChat(title)}>
-          <BiComment className='dropdown-comment-icon'/>
-          {title}
-        </li>
-        ))}
+          {chatTitles.length > 0 ? chatTitles?.map((title, index) => (
+            <li key={index}>
+              <BiComment className='dropdown-comment-icon'/>
+              <p
+                className='dropdown-history-text'
+                onClick={()=> displayPreviousChat(title)}>{title}</p>
+              <BiTrash
+                className='dropdown-trash-icon'
+                onClick={()=> deleteChat(title)}/>
+            </li>
+          )) : null}
       </ul>
+      {chatHistory?.length > 0 ?
+        <div className='delete-history'>
+          <h6 onClick={deleteChatHistory}>Delete History</h6><BiTrash/>
+        </div> :
+      null}
     </section>
   )
 }
