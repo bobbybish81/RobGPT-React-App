@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+# RobGPT React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src='./src/assets/robgpt.webp' width='800'/>
 
-## Available Scripts
+Deployed link: https://robgpt.netlify.app
 
-In the project directory, you can run:
+# Overview
+This project is a clone of the ChatGPT language model, which has been built using React and TypeScript. RobGPT provides a user-friendly chatbot interface, allowing users to ask questions or make requests, and receive relevant responses based on the language model's training.
+The application is simple and intuitive, and uses the OpenAI API to provide accurate and up-to-date responses to user queries.
 
-### `npm start`
+# Technologies
+React JS • 
+Typescript • 
+Node JS
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Installation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- To get started, first ensure that you have the latest version of Node.js installed on your system.
+- Clone the project repository to your local machine, and navigate to the project directory in your terminal or command prompt.
+- Run npm install to install all the project dependencies.
+- Once all the dependencies are installed, you can start the development server by running npm start.
 
-### `npm test`
+# Usage:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Once the development server is up and running, you can access the chatbot interface by navigating to http://localhost:3000/ in your web browser.
+You can interact with the chatbot by typing your questions or requests into the input field and hitting enter. The chatbot will provide a response based on its training and the context of your query.
+You can customize the chatbot's behavior by modifying the source code in the project directory. The code is written using TypeScript, which provides a type-safe and easy-to-maintain development experience.
 
-### `npm run build`
+# Author
+<h3>Robert Bish</h3>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<a href='https://www.linkedin.com/in/robert-bish-1a6a8637'>
+  <img src='https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white' alt='LinkedIn Badge'/>
+</a>
+<a href='https://robertbishwebdeveloper.com'>
+  <img src='https://img.shields.io/badge/Portfolio-darkgreen?style=for-the-badge&logo=portfolio&logoColor=white' alt='Portfolio Badge'/>
+</a>
+<a href='https://www.facebook.com/robert.bish.9'>
+  <img src='https://img.shields.io/badge/Facebook-darkblue?style=for-the-badge&logo=facebook&logoColor=white' alt='Facebook Badge'/>
+</a>

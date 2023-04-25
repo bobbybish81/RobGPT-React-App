@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CiLocationArrow1 } from 'react-icons/ci';
 import { BsQuestionSquare } from 'react-icons/bs';
@@ -30,7 +30,7 @@ const Feed = ({
   currentTitle,
   setCurrentTitle } : FeedProps) => {
 
-  const sendMessage = async (event:any) => {
+  const sendMessage = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const options = {
       method: 'POST',
@@ -48,6 +48,7 @@ const Feed = ({
       const response = await fetch('https://api.openai.com/v1/chat/completions', options);
       const data = await response.json();
       setResponse(data.choices[0].message);
+      /* eslint-disable no-prototype-builtins */
       if (!currentTitle && !chatHistory.some(obj => obj.hasOwnProperty(message))) {
         setCurrentTitle(message);
       }
@@ -74,7 +75,7 @@ const Feed = ({
       {!currentTitle && 
       <div className='feed-header'>
         <h1>RobGPT</h1>
-        <p>To use RobGPT, you can simply start by asking a question or giving a prompt. RobGPT is a language model designed to understand and respond to a wide range of questions and prompts, so feel free to ask anything that comes to mind.</p>
+        <p>RobGPT is a language model designed to understand and respond to a wide range of questions and prompts, so feel free to ask anything that comes to mind in the message box below.</p>
         <div>Chat repsonses provded by platform.openai.com</div>
       </div>
       }
@@ -97,7 +98,7 @@ const Feed = ({
           onSubmit={sendMessage}>
             <input
               type='text'
-              value={message!}
+              value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder='Send a message...'/>
             <button

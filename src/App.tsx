@@ -22,8 +22,8 @@ const App = () => {
     if (currentTitle) {
       const history = chatHistory?.filter(chat => chat.chatTitle !== currentTitle);
       history.push({
-        chatTitle: currentTitle!,
-        chat: currentChat!,
+        chatTitle: currentTitle,
+        chat: currentChat,
       })
       setChatHistory(history)
     }
@@ -38,7 +38,6 @@ const App = () => {
   }
 
   const deleteChatHistory = () => {
-    console.log('jello')
     setChatHistory([]);
   }
 
