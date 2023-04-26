@@ -73,10 +73,16 @@ const Feed = ({
   return (
     <section className='feed-section'>
       {!currentTitle && 
-      <div className='feed-header'>
+      <div className='feed-intro'>
         <h1>RobGPT</h1>
         <p>RobGPT is a language model designed to understand and respond to a wide range of questions and prompts, so feel free to ask anything that comes to mind in the message box below.</p>
         <div>Chat repsonses provded by platform.openai.com</div>
+        <div className='bot-image-div'>
+          <img
+            src={require('../assets/botImage.webp')}
+            alt='botimage to appear'
+            className='bot-image'/>
+        </div>
       </div>
       }
       <ul className='feed'>

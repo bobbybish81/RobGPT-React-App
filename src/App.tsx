@@ -63,6 +63,7 @@ const App = () => {
     <>
       <Header
         chatHistory={chatHistory}
+        currentChat={currentChat}
         newChat={newChat}
         displayPreviousChat={displayPreviousChat}
         deleteChat={deleteChat}

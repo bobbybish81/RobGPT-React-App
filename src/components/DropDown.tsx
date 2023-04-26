@@ -9,9 +9,16 @@ interface DropDownProps {
   displayPreviousChat: (title : string) => void,
   deleteChat: (title : string) => void,
   deleteChatHistory: () => void,
+  toggle: () => void,
 }
 
-const DropDown = ({ chatHistory, openDropdown, displayPreviousChat, deleteChat, deleteChatHistory } : DropDownProps) => {
+const DropDown = ({
+  chatHistory,
+  openDropdown,
+  displayPreviousChat,
+  deleteChat,
+  deleteChatHistory,
+  toggle } : DropDownProps) => {
 
   const chatTitles = Array.from(new Set(chatHistory.map(chat => chat.chatTitle)));
 
@@ -25,8 +32,6 @@ const DropDown = ({ chatHistory, openDropdown, displayPreviousChat, deleteChat, 
       padding: '0'
     }
   }
-
-
 
   return (
     <section
@@ -49,8 +54,13 @@ const DropDown = ({ chatHistory, openDropdown, displayPreviousChat, deleteChat, 
       {chatHistory?.length > 0 ?
         <div
           className='delete-history'
-          style={{display: openDropdown ? 'flex' : 'none'}}>
-            <h6 onClick={deleteChatHistory}>Delete History</h6><BiTrash/>
+          style={{ display: openDropdown ? 'flex' : 'none' }}
+          onClick={() => {
+            deleteChatHistory();
+            toggle();
+          }}>
+          <h6>Delete History</h6>
+          <BiTrash />
         </div> :
       null}
     </section>

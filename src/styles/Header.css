@@ -8,6 +8,11 @@
   z-index: 99;
 }
 
+header h3 {
+  width: 100%;
+  text-align: center;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
