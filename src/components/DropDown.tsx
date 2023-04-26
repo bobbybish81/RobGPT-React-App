@@ -26,6 +26,8 @@ const DropDown = ({ chatHistory, openDropdown, displayPreviousChat, deleteChat, 
     }
   }
 
+
+
   return (
     <section
       className='history-dropdown'
@@ -45,8 +47,10 @@ const DropDown = ({ chatHistory, openDropdown, displayPreviousChat, deleteChat, 
           )) : null}
       </ul>
       {chatHistory?.length > 0 ?
-        <div className='delete-history'>
-          <h6 onClick={deleteChatHistory}>Delete History</h6><BiTrash/>
+        <div
+          className='delete-history'
+          style={{display: openDropdown ? 'flex' : 'none'}}>
+            <h6 onClick={deleteChatHistory}>Delete History</h6><BiTrash/>
         </div> :
       null}
     </section>
