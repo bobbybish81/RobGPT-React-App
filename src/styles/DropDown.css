@@ -1,7 +1,7 @@
 .history-dropdown {
   width: 100%;
   position: absolute;
-  top: 4rem;
+  top: 3.75rem;
   left: 0;
   background-color: #343541;
   color: #fff;
@@ -47,6 +47,7 @@
 .delete-history {
   padding: 0 1rem 0 0;
   justify-content: flex-end;
+  margin-bottom: 1rem;
 }
 
 .delete-history h6 {
