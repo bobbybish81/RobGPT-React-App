@@ -44,10 +44,16 @@ const DropDown = ({
               <BiComment className='dropdown-comment-icon'/>
               <p
                 className='dropdown-history-text'
-                onClick={()=> displayPreviousChat(title)}>{title}</p>
+                onClick={()=> {
+                  displayPreviousChat(title);
+                  toggle();
+                }}>{title}</p>
               <BiTrash
                 className='dropdown-trash-icon'
-                onClick={()=> deleteChat(title)}/>
+                onClick={()=> {
+                  deleteChat(title);
+                  toggle();
+                }}/>
             </li>
           )) : null}
       </ul>

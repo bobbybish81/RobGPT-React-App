@@ -1,5 +1,4 @@
 .feed-section {
-  height: 100vh;
   width: 100%;
   padding: 0;
   position: relative;
@@ -17,7 +16,7 @@
 
 .feed-intro p {
   width: 90%;
-  margin: 2rem auto 1rem;
+  margin: 1rem auto;
   padding: 1rem;
   text-align: center;
   line-height: 1.5rem;
@@ -51,8 +50,10 @@
 
 .feed {
   width: 100%;
-  overflow-y: scroll;
-  margin: 0;
+  height: 30rem;
+  max-height: 30rem;
+  overflow: scroll;
+  margin: 0 0 12rem 0;
   padding: 1.25rem 0 0;
   display: flex;
   flex-direction: column;
@@ -192,7 +193,9 @@
 
   .feed {
     height: 80%;
+    position: static;
     padding-top: 2rem;
+    margin: 0;
   }
 
   .message, .response {

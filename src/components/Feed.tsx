@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CiLocationArrow1 } from 'react-icons/ci';
 import { BsQuestionSquare } from 'react-icons/bs';
@@ -29,6 +29,10 @@ const Feed = ({
   setCurrentChat,
   currentTitle,
   setCurrentTitle } : FeedProps) => {
+
+  useLayoutEffect(() => {
+    window.scrollTo(0,0)
+  })
 
   const sendMessage = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
