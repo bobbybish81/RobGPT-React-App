@@ -1,6 +1,7 @@
 interface IResponse {
-  role: string,
-  content: string,
+  loading: boolean,
+  role: string | undefined
+  content: string | undefined
 }
 
 export default IResponse

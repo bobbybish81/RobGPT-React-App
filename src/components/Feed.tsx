@@ -36,6 +36,10 @@ const Feed = ({
 
   const sendMessage = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setResponse({
+      loading: true,
+      role: undefined,
+      content: undefined})
     const options = {
       method: 'POST',
       headers: {
@@ -51,7 +55,11 @@ const Feed = ({
     try {
       const response = await fetch('https://api.openai.com/v1/chat/completions', options);
       const data = await response.json();
-      setResponse(data.choices[0].message);
+      setResponse({...response,
+        loading: false,
+        role: data.choices[0].message.role,
+        content: data.choices[0].message.content,
+      });
       /* eslint-disable no-prototype-builtins */
       if (!currentTitle && !chatHistory.some(obj => obj.hasOwnProperty(message))) {
         setCurrentTitle(message);
@@ -62,7 +70,7 @@ const Feed = ({
   }
 
   useEffect(() => {
-    if (currentTitle && message.length > 0 && response) {
+    if (currentTitle && message.length > 0 && response?.content) {
       const newMessage = {
         clientRole: 'user',
         message: message,
@@ -71,12 +79,13 @@ const Feed = ({
       }
       setCurrentChat(prevArray => [...prevArray, newMessage]);
       setMessage('');
-    } 
+    }
+    console.log('currentChat:', currentChat)
   }, [response, currentTitle]);
 
   return (
     <section className='feed-section'>
-      {!currentTitle && 
+      {!currentTitle && !response?.loading &&
       <div className='feed-intro'>
         <h1>RobGPT</h1>
         <p>RobGPT is a language model designed to understand and respond to a wide range of questions and prompts, so feel free to ask anything that comes to mind in the message box below.</p>
@@ -87,8 +96,7 @@ const Feed = ({
             alt='botimage to appear'
             className='bot-image'/>
         </div>
-      </div>
-      }
+      </div>}
       <ul className='feed'>
       {currentChat?.map((chat, index) =>
         <li key={index}>
@@ -101,6 +109,8 @@ const Feed = ({
             <p className='content'>{chat.response}</p>
           </div>
         </li>)}
+      {response?.loading && (<section className='loading'><div className='spinner-border' role='status'>
+      <span className='sr-only'></span></div></section>)}
       </ul>
       <section className='form-section'>
         <form
@@ -108,6 +118,7 @@ const Feed = ({
           onSubmit={sendMessage}>
             <input
               type='text'
+              name='message'
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder='Send a message...'/>
